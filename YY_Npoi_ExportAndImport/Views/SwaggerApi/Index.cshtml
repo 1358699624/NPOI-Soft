@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "NPOI导出Word文档示例";
 }
+ //<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <div class="layui-header header header-doc" spring>
     <div class="layui-main">
         <ul class="layui-nav" id="nav">
@@ -16,22 +17,32 @@
             <li class="layui-nav-item">
                 <a href="@Url.Action("Index","Operation")" style="text-decoration:none;">Operation</a>
             </li>
+            
+             <li class="layui-nav-item">
+                <a href="@Url.Action("Index","SwaggerApi")" style="text-decoration:none;">SwaggerApi</a>
+            </li>
         </ul>
     </div>
 </div>
 <div style="height: 20px;"></div>
+
 <div class="text-center">
-    <button type="button" class="layui-btn layui-btn-fluid" onclick="wordExport()" style="width: 600px;">导出并保存如下图所示的Word文档</button>
-    <img src="~/images/wordPicture.png" height="530" />
+ <button type="button" class="layui-btn layui-btn-fluid" title="swaggerapi" onclick="swaggerapiDB()" style="width: 400px;">swaggerapi调用</button>
 </div>
 <script type="text/javascript">
-    function wordExport() {
-        var index = layer.msg('Work文档努力生成中...', { icon: 16, shade: 0.8, time: false });
+    function swaggerapiDB() {
+        var index = layer.msg('调用中...', { icon: 16, shade: 0.8, time: false });
         $.ajax({
             async: true,
             dataType: "json",
             type: "post",
-            url: "@Url.Action("WordExport","Home")",
+            url: "@Url.Action("QueryHouseCentersByOwnerMember","SwaggerApi")",
+            data:{ // 提交数据
+                "gettable": "admin", // 前者为字段名，后者为数据
+                "page": 1,
+                "limit": 2,
+                "userName": "涂登奎"
+            },
             success: function (res) {
                 layer.close(index);
                 if (res.code == 1) {

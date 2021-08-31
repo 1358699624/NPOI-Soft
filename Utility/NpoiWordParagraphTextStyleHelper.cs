@@ -94,7 +94,7 @@ namespace YY_Utility
             xwpfRun.IsItalic = isItalic;//是否设置斜体（字体倾斜）
             xwpfRun.IsBold = isBold;//是否加粗
             xwpfRun.SetFontFamily("宋体", FontCharRange.None);//设置字体（如：微软雅黑,华文楷体,宋体）
-            xwpfRun.SetTextPosition(textPosition);//设置文本位置（设置两行之间的行间），从而实现table的高度设置效果 
+            //xwpfRun.SetTextPosition(textPosition);//设置文本位置（设置两行之间的行间），从而实现table的高度设置效果 
             return paragraph;
         }
     }

@@ -75,9 +75,13 @@ namespace Export.Services
 
 
                     //Table 表格第一行展示...后面的都是一样，只改变GetRow中的行数
-                    for (int i = 0; i < 5; i++)
+                    for (int i = 0; i < 4; i++)
                     {
-                        firstXwpfTable.GetRow(0).GetCell(i).SetParagraph(NpoiWordParagraphTextStyleHelper._.SetTableParagraphInstanceSetting(document, firstXwpfTable, "企业名称", ParagraphAlignment.CENTER, 22, true));
+                        for (int j   = 0; j < 4; j++)
+                        {
+                            firstXwpfTable.GetRow(i).GetCell(j).SetParagraph(NpoiWordParagraphTextStyleHelper._.SetTableParagraphInstanceSetting(document, firstXwpfTable, "企业名称", ParagraphAlignment.CENTER));
+
+                        }
                     }
                     /*firstXwpfTable.GetRow(0).GetCell(0).SetParagraph(NpoiWordParagraphTextStyleHelper._.SetTableParagraphInstanceSetting(document, firstXwpfTable, "企业名称", ParagraphAlignment.CENTER, 22, true));
                     firstXwpfTable.GetRow(0).GetCell(1).SetParagraph(NpoiWordParagraphTextStyleHelper._.SetTableParagraphInstanceSetting(document, firstXwpfTable, "追逐时光", ParagraphAlignment.CENTER, 22, false));
